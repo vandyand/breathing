@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changing Background with Sound Effects</title>
+    <style>
+        body {
+            background-color: #77DD77;
+            transition: background-color 1s;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="startSequence()">Start</button>
+    <audio id="inhaleSound" src="https://www.fesliyanstudios.com/play-mp3/2711" preload="auto"></audio>
+    <script>
+        let isGreen = true;
+        let inhaleSound = document.getElementById("inhaleSound");
+
+        function changeBackgroundColor() {
+            if (isGreen) {
+                document.body.style.backgroundColor = '#AEC6CF';
+                setTimeout(changeBackgroundColor, 2000);
+            } else {
+                document.body.style.backgroundColor = '#77DD77';
+                inhaleSound.currentTime = 0;
+                inhaleSound.play();
+                setTimeout(changeBackgroundColor, 1000);
+            }
+            isGreen = !isGreen;
+        }
+
+        function startSequence() {
+            inhaleSound.playbackRate = 1.2;
+            setTimeout(changeBackgroundColor, 1000);
+        }
+    </script>
+</body>
+</html>
