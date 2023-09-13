@@ -13,6 +13,12 @@
 </head>
 <body>
     <button onclick="startSequence()">Start</button>
+    <div id="controls">
+        <label for="speedControl">Speed: </label>
+        <input type="range" id="speedControl" min="0.5" max="2" step="0.1" value="1">
+        <label for="volumeControl">Volume: </label>
+        <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="1">
+    </div>
     <audio id="inhaleSound" src="https://www.fesliyanstudios.com/play-mp3/2711" preload="auto"></audio>
     <script>
         let isGreen = true;
@@ -35,6 +41,17 @@
             inhaleSound.playbackRate = 1.2;
             setTimeout(changeBackgroundColor, 1000);
         }
+
+        let speedControl = document.getElementById("speedControl");
+        let volumeControl = document.getElementById("volumeControl");
+
+        speedControl.addEventListener('input', function() {
+            inhaleSound.playbackRate = this.value;
+        });
+
+        volumeControl.addEventListener('input', function() {
+            inhaleSound.volume = this.value;
+        });
     </script>
 </body>
 </html>
