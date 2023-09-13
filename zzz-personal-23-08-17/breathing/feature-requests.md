@@ -7,3 +7,5 @@ file: feature-requests.md
     - [x] variable volume control
     - [ ] audio playback loop
 
+- Bugs
+    - [ ] fix audio speed issue with 'setTimeouts'
